@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  mqtt_broker:
+    build:
+      context: ./
+      args: []
+    depends_on:
+      - redis
+    environment:
+      - PORT=1883
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - node_modules:/node_modules
+    ports:
+      - '1883:1883'
+    command: ['node', 'index.js']
+
+  redis:
+    image: redis:4.0.2-alpine
+    volumes:
+      - redis:/redis
+    user: redis
+
+volumes:
+  redis:
+  node_modules:

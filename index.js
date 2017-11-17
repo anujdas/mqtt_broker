@@ -1,19 +1,22 @@
 const mosca = require('mosca');
 const redis = require('redis');
 
+const port = parseInt(process.env.PORT) || 1883;
+const redisPort = parseInt(process.env.REDIS_PORT) || 6379;
+
 const moscaConfig = {
-  port: process.env.PORT || 1883,
+  port: port,
   backend: {
     type: 'redis',
     redis: redis,
     host: process.env.REDIS_HOST || 'localhost',
-    port: process.env.REDIS_PORT || 6379,
+    port: redisPort,
     db: 0,
     return_buffers: true,
   }, persistence: {
     factory: mosca.persistence.Redis,
     host: process.env.REDIS_HOST || 'localhost',
-    port: process.env.REDIS_PORT || 6379,
+    port: redisPort,
   }
 };
 

@@ -6,7 +6,7 @@
   "dependencies": {
     "mosca": "^2.7.0",
     "mqtt": "^2.14.0",
-    "redis": "^2.8.0"
+    "ioredis": "^2.3.0"
   },
   "engines": {
     "node": "8.6.x"

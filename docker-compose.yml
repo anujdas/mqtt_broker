@@ -14,7 +14,7 @@ services:
       - node_modules:/node_modules
     ports:
       - '1883:1883'
-    command: ['node', 'index.js']
+    command: ['npm', 'start']
 
   redis:
     image: redis:4.0.2-alpine
